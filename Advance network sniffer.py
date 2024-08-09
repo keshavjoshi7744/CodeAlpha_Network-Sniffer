@@ -10,7 +10,7 @@ from datetime import datetime
 def process_packet(packet):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-    # Print a brief summary of the packet
+    #Print a brief summary of the packet
     print(f"\n[+] Captured Packet at {timestamp}")
     print(packet.summary())
 
@@ -19,12 +19,12 @@ def process_packet(packet):
         ip_layer = packet[IP]
         print(f"IP Packet: {ip_layer.src} -> {ip_layer.dst}")
 
-        #Check if it's a TCP packet and print relevant details
+        #Check if it is a TCP packet and print details
         if packet.haslayer(TCP):
             tcp_layer = packet[TCP]
             print(f"TCP Packet: Source Port {tcp_layer.sport} -> Destination Port {tcp_layer.dport}")
 
-        #Check if it's a UDP packet and print relevant details
+        #Check if this is a UDP packet and print details
         elif packet.haslayer(UDP):
             udp_layer = packet[UDP]
             print(f"UDP Packet: Source Port {udp_layer.sport} -> Destination Port {udp_layer.dport}")
